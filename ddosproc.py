@@ -1,20 +1,33 @@
 import os
+import subprocess
 import time
 
 # Script is used to protect against a slowloris DDoS attack.
 # Originally created for use with FXServer.
 # Stores blocked IP's in a text document named blockedIPs.txt.
 
-# Edit connectionTotal to control the number of total connections before a ban.
-# Edit refreshRate to control time before script re-executes.
+# Edit connectionTotal below to control the number of total connections before a ban.
+# Edit refreshRate below to control time before script re-executes.
+
 connectionTotal = 15
 refreshRate = 3
+
 
 blockedips = []
 connums = []
 ips = []
 
 while True:
+    if os.path.isdir('/etc/ufw/'):
+        ufws = subprocess.Popen(["ufw","status"], stdout=subprocess.PIPE)
+        s = str(ufws.communicate())
+        if 'inactive' in s:
+            print('UFW Disabled. To enable, enter `sudo ufw enable` into your terminal.')
+            break
+    else:
+        print('UFW not installed. To install, enter `sudo apt-get install ufw` into your terminal.')
+        break
+        
     f = open('blockedIPs.txt','a')
     ns = os.popen("netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r")
     ipl = ns.read()
@@ -34,4 +47,3 @@ while True:
                 f.write(ips[x] + '\n')   
     f.close()
     time.sleep(refreshRate)
-    
