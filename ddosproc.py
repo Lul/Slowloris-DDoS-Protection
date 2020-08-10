@@ -5,7 +5,7 @@ import time
 # Originally created for use with FXServer.
 # Edit connectionTotal to control the number of total connections before a ban.
 # Edit refreshRate to control time before script re-executes.
-# Script will automatically ban those IPs using UFW Interface
+# Script will automatically ban those IPs using UFW Interface and reload the firewall rules
 # Stores blocked IP's in a text document named blockedIPs.txt.
 
 connectionTotal = 15
