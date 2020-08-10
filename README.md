@@ -1,6 +1,6 @@
 # Slowloris-DDoS-Protection
 This script was created to help combat the issue of a slowloris DDoS attack (created for use with FXServer in particular).\
-This script should be used as a **last line of defense**, and should theoretically work any game server powered by **Ubuntu 20.04&**.\
+This script should be used as a **last line of defense**, and should theoretically work any game server powered by **Ubuntu 20.04**.\
 This script utilizes Linux's ***UFW*** program to block IPs.\
 
 # Usage
