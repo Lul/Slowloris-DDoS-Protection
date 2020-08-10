@@ -3,10 +3,11 @@ import time
 
 # Script is used to protect against a slowloris DDoS attack.
 # Originally created for use with FXServer.
-# Stores blocked IP's in a text document named blockedIPs.txt.
-
 # Edit connectionTotal to control the number of total connections before a ban.
 # Edit refreshRate to control time before script re-executes.
+# Script will automatically ban those IPs using UFW Interface
+# Stores blocked IP's in a text document named blockedIPs.txt.
+
 connectionTotal = 15
 refreshRate = 3
 
