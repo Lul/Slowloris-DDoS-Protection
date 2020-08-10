@@ -1,7 +1,7 @@
 # Slowloris DDoS Protection
 This script was created to help combat the issue of a slowloris DDoS attack (created for use with FXServer in particular).\
-This script should be used as a **last line of defense**, and should theoretically work any game server powered by **Ubuntu 20.04**.\
-This script utilizes Linux's ***UFW*** program to block IPs.
+This script should be used as a **last line of defense**, and should theoretically work any **Ubuntu** or **Debian** based server.\
+This script utilizes Linux's ***UFW*** program to block IPs and is required for operation.
 
 # Usage
 During normal operation, run the command `netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r` to determine how many connections a normal player establishes.\
