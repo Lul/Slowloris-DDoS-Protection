@@ -18,6 +18,9 @@ connums = []
 ips = []
 
 while True:
+    if os.geteuid() != 0:
+        print("This script requires root privileges. Exiting.")
+        break
     if os.path.isdir('/etc/ufw/'):
         ufws = subprocess.Popen(["ufw","status"], stdout=subprocess.PIPE)
         s = str(ufws.communicate())
@@ -26,8 +29,7 @@ while True:
             break
     else:
         print('UFW not installed. To install, enter `sudo apt-get install ufw` into your terminal.')
-        break
-        
+        break            
     f = open('blockedIPs.txt','a')
     ns = os.popen("netstat -ntu|awk '{print $5}'|cut -d: -f1 -s|sort|uniq -c|sort -nk1 -r")
     ipl = ns.read()
