@@ -8,7 +8,7 @@ import time
 # Script will automatically ban those IPs using UFW Interface and reload the firewall rules
 # Stores blocked IP's in a text document named blockedIPs.txt.
 
-connectionTotal = 15
+connectionTotal = 100
 refreshRate = 3
 
 blockedips = []
