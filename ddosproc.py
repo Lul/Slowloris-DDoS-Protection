@@ -27,7 +27,7 @@ while True:
             ips.append(l[x])
     for x, y in enumerate(connums):
         if int(y) > connectionTotal:
-            if ips[x] != '127.0.0.1' and ips[x] not in blockedips:
+            if ips[x] not in blockedips:
                 print('Blocking %s with %d connections' % (ips[x], int(y)))
                 os.system(str('ufw insert 2 deny from %s' % ips[x]))
                 os.system(str('ufw reload'))
